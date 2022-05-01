@@ -22,25 +22,12 @@ def get_data(repo_name):
     client = MongoClient(mongo_uri)
 
     emails = client.emails[repo_name]
-
-    email_list = []
-    for email in emails.find():
-        email_list.append(email)
     
-    return email_list
+    email_list = list(emails.find())
+    
+    return {
+        "list": email_list,
+        "count": len(email_list)
+    }
 
 print(get_data('microsoft/typescript'))
-
-# data = [
-#     {
-#         "number": 1,
-#         "username": "w",
-#         "email": "x"
-#     },
-#     {
-#         "number": 2,
-#         "username": "y",
-#         "email": "z"
-#     }]
-
-# insert_data("microsoft/typescript", data)

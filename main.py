@@ -77,7 +77,7 @@ def get_repo_stargazers(account_name, repo_name, count=0):
     for i in range(page_start, num_pages + 1):
         stargazers_url = url + '/stargazers?per_page=100&page=' + str(i)
         stargazers_data = requests.get(stargazers_url, headers=request_headers)
-        stargazers = stargazers_data.json()[start_index:99]
+        stargazers = stargazers_data.json()[start_index:100]
 
         email_list = []
 
