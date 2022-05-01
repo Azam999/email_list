@@ -1,0 +1,106 @@
+[
+    {
+        "account_name": "microsoft",
+        "repo_name": "typescript"
+    },
+    {
+        "account_name": "freeCodeCamp",
+        "repo_name": "freeCodeCamp"
+    },
+    {
+        "account_name": "996icu",
+        "repo_name": "996.ICU"
+    },
+    {
+        "account_name": "EbookFoundation",
+        "repo_name": "free-programming-books"
+    },
+    {
+        "account_name": "jwasham",
+        "repo_name": "coding-interview-university"
+    },
+    {
+        "account_name": "sindresorhus",
+        "repo_name": "awesome"
+    },
+    {
+        "account_name": "vuejs",
+        "repo_name": "vue"
+    },
+    {
+        "account_name": "kamranahmedse",
+        "repo_name": "developer-roadmap"
+    },
+    {
+        "account_name": "public-apis",
+        "repo_name": "public-apis"
+    },
+    {
+        "account_name": "facebook",
+        "repo_name": "react"
+    },
+    {
+        "account_name": "donnemartin",
+        "repo_name": "system-design-primer"
+    },
+    {
+        "account_name": "tensorflow",
+        "repo_name": "tensorflow"
+    },
+    {
+        "account_name": "twbs",
+        "repo_name": "bootstrap"
+    },
+    {
+        "account_name": "getify",
+        "repo_name": "You-Dont-Know-JS"
+    },
+    {
+        "account_name": "CyC2018",
+        "repo_name": "CS-Notes"
+    },
+    {
+        "account_name": "ohmyzsh",
+        "repo_name": "ohmyzsh"
+    },
+    {
+        "account_name": "flutter",
+        "repo_name": "flutter"
+    },
+    {
+        "account_name": "trekhleb",
+        "repo_name": "javascript-algorithms"
+    },
+    {
+        "account_name": "danistefanovic",
+        "repo_name": "build-your-own-x"
+    },
+    {
+        "account_name": "TheAlgorithms",
+        "repo_name": "Python"
+    },
+    {
+        "account_name": "github",
+        "repo_name": "gitignore"
+    },
+    {
+        "account_name": "torvalds",
+        "repo_name": "linux"
+    },
+    {
+        "account_name": "microsoft",
+        "repo_name": "vscode"
+    },
+    {
+        "account_name": "vinta",
+        "repo_name": "awesome-python"
+    },
+    {
+        "account_name": "airbnb",
+        "repo_name": "javascript"
+    },
+    {
+        "account_name": "Snailclimb",
+        "repo_name": "JavaGuide"
+    }
+]
