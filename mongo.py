@@ -30,4 +30,4 @@ def get_data(repo_name):
         "count": len(email_list)
     }
 
-print(get_data('microsoft/typescript'))
+# print(get_data('microsoft/typescript'))

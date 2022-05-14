@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import json
 from mongo import insert_data
 import time
+import re
 
 # Load environment variables in current directory
 load_dotenv()
@@ -36,14 +37,13 @@ def update_json_file(account_name, repo_name, file_name, new_data):
         with open(file_name, 'w') as f:
             json.dump(current_data, f, indent=4)
 
-
 count = 0
 def get_repo_stargazers(account_name, repo_name, number=0):
     try:
         global count
     
         if number != 0:
-            count = number - 1
+            count = number
             
         url = base_repos_url + f'{account_name}/{repo_name}'
 
@@ -82,7 +82,10 @@ def get_repo_stargazers(account_name, repo_name, number=0):
 
         # 100 people per page to max number of pages, or 400 pages
         
+        unknown_email_pattern = re.compile(".{0,}@.{8}-.{4}-.{4}-.{4}-.{12}")
+        
         for i in range(page_start, num_pages + 1):
+            print('Page:', i)
             stargazers_url = url + '/stargazers?per_page=100&page=' + str(i)
             stargazers_data = requests.get(stargazers_url, headers=request_headers)
             stargazers = stargazers_data.json()[start_index:100]
@@ -112,10 +115,10 @@ def get_repo_stargazers(account_name, repo_name, number=0):
                             committer_username = user_repo_commit['url'].split(
                                 '/')[4]
                             if (committer_username == username):
-                                email = user_repo_commit['commit']['committer']['email']
+                                email = user_repo_commit['commit']['author']['email']
                                 
                                 exclude_values = ["noreply", "macbook", "localhost", "gmail.com@", ".local", "github@"]
-                                if any(exclude_value in email for exclude_value in exclude_values):
+                                if any(exclude_value in email for exclude_value in exclude_values) or unknown_email_pattern.search(email):
                                     pass
                                 else:
                                     data = {
@@ -124,7 +127,7 @@ def get_repo_stargazers(account_name, repo_name, number=0):
                                         "email": email
                                     }
 
-                                    update_json_file(account_name, repo_name, 'data2.json', [data])
+                                    update_json_file(account_name, repo_name, 'test.json', [data])
                                     
                                     email_list.append(data)
 
@@ -148,5 +151,5 @@ with open('repositories.json', 'r') as f:
     repositories_list = json.load(f)
 
 for repository in repositories_list:
-    start_number = 0
+    start_number = 3393
     get_repo_stargazers(repository['account_name'], repository['repo_name'], number=start_number)
