@@ -64,7 +64,7 @@ def get_repo_stargazers(account_name, repo_name, number=0):
         start_index = 0
 
         if count > 0:
-            page_start = floor(count / 100)
+            page_start = ceil(count / 100)
             start_index = round(((count / 100) % 1) * 100)
 
             if (stargazers_count / 100) > 400:
@@ -124,7 +124,7 @@ def get_repo_stargazers(account_name, repo_name, number=0):
                                         "email": email
                                     }
 
-                                    update_json_file(account_name, repo_name, 'info.json', [data])
+                                    update_json_file(account_name, repo_name, 'data2.json', [data])
                                     
                                     email_list.append(data)
 
@@ -138,6 +138,7 @@ def get_repo_stargazers(account_name, repo_name, number=0):
             insert_data(f'{account_name}/{repo_name}', email_list)
             email_list = []
     except: # will throw an error after the max number of requests is reached
+        print('Start sleeping...')
         time.sleep(60 * 60) # requests reset after 1 hour
         get_repo_stargazers(account_name, repo_name, count)
 
@@ -147,4 +148,5 @@ with open('repositories.json', 'r') as f:
     repositories_list = json.load(f)
 
 for repository in repositories_list:
-    get_repo_stargazers(repository['account_name'], repository['repo_name'], number=0)
+    start_number = 0
+    get_repo_stargazers(repository['account_name'], repository['repo_name'], number=start_number)
